@@ -1,100 +1,36 @@
-// const router = require('express').Router();
-// const { Project, User } = require('../models');
-// const withAuth = require('../utils/auth');
+// to access use: /api/poem
+const router = require('express').Router();
+const {Poem, User} = require('../../models')
+const withAuth = require ('../../utils/auth');
 
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all projects and JOIN with user data
-//     const projectData = await Project.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
+router.post('/', withAuth, async (req,res) => {
+  try {
+      const newPoem = await Poem.create({
+          ...req.body,
+          user_id: req.session.user_id,
+      });
+      res.status(200).json(newPoem);
+  } catch (err) {
+      res.status(400).json(err);
+  }
+});
 
-//     // Serialize data so the template can read it
-//     const projects = projectData.map((project) => project.get({ plain: true }));
+router.delete('/:id', withAuth, async (req,res) => {
+    try {
+        const poemData = await Poem.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+        if (!poemData) {
+            res.status(404).json({message: "Poem not found"});
+            return;
+        }
 
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       projects, 
-//       logged_in: req.session.logged_in 
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 
-// router.get('/project/:id', async (req, res) => {
-//   try {
-//     const projectData = await Project.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-
-//     const project = projectData.get({ plain: true });
-
-//     res.render('project', {
-//       ...project,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// // Use withAuth middleware to prevent access to route
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.get('/login', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect('/profile');
-//     return;
-//   }
-
-//   res.render('login');
-// });
-
-
-
-// module.exports = router;
-
-const router = require("express").Router();
-
-// endpoint: /api/profile
-
-//view all profiles
-router.get('/', (req, res) => {
-  res.json("this will have all profiles searched")
-})
-
-router.get("/:id", (req, res) => {
-  console.log(req.params.id)
-  res.json("I logged the ID you input")
-})
-
-module.exports = router
+});
+module.exports = router;
