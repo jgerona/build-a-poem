@@ -1,5 +1,5 @@
-// const router = require('express').Router();
-// const { Project, User } = require('../models');
+const router = require("express").Router();
+const { Poem, User } = require("../../models");
 // const withAuth = require('../utils/auth');
 
 // router.get('/', async (req, res) => {
@@ -18,9 +18,9 @@
 //     const projects = projectData.map((project) => project.get({ plain: true }));
 
 //     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       projects, 
-//       logged_in: req.session.logged_in 
+//     res.render('homepage', {
+//       projects,
+//       logged_in: req.session.logged_in
 //     });
 //   } catch (err) {
 //     res.status(500).json(err);
@@ -79,22 +79,33 @@
 //   res.render('login');
 // });
 
-
-
 // module.exports = router;
-
-const router = require("express").Router();
 
 // endpoint: /api/profile
 
 //view all profiles
-router.get('/', (req, res) => {
-  res.json("this will have all profiles searched")
-})
+router.get("/", (req, res) => {
+  res.json("this will have my poems");
+});
 
-router.get("/:id", (req, res) => {
-  console.log(req.params.id)
-  res.json("I logged the ID you input")
-})
+router.get("/:id", withAuth, (req, res) => {
+  console.log(req.params.id);
 
-module.exports = router
+  Poem.findAll({ where: { user_id: req.params.id } })
+    .then((poemData) => {
+      if (poemData) {
+        const poems = poemData.get({ plain: true });
+
+        res.render("profile", {
+          poems,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;

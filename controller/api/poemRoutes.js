@@ -89,7 +89,7 @@ const router = require("express").Router();
 
 //view all profiles
 router.get('/', (req, res) => {
-  res.json("this will have all profiles searched")
+  res.json("this will have all poems searched")
 })
 
 router.get("/:id", (req, res) => {
