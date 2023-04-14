@@ -32,7 +32,7 @@ app.use(session(sess));
 const hbs = exphbs.create({ helpers });
 
 // Inform Express.js on which template engine to use
-app.engine('handlebars', exphbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
