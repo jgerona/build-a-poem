@@ -1,5 +1,5 @@
-const tileEl = document.querySelectorAll(".tile");
 const playgroundEl = document.querySelector(".playground");
+const stagingEl = document.querySelector(".staging-area");
 const tileSet = [
   "&",
   "&",
@@ -334,6 +334,14 @@ const tileSet = [
 
 const subArrSize = 50;
 
+const randomizeTilePosition = (tileEl) => {
+  const marginVar = 50;
+  tileEl.style.marginTop = Math.floor(Math.random() * marginVar) + "px";
+  tileEl.style.marginRight = Math.floor(Math.random() * marginVar) + "px";
+  tileEl.style.marginLeft = Math.floor(Math.random() * marginVar) + "px";
+  tileEl.style.marginBottom = Math.floor(Math.random() * marginVar) + "px";
+};
+
 const getRandomSubArr = (arr, size) => {
   let shuffled = arr.slice(0),
     i = arr.length,
@@ -359,27 +367,39 @@ const displayArr = (arr) => {
   }
 
   document.querySelectorAll(".tile").forEach((tile) => {
-    const marginVar = 50;
-    tile.style.marginTop = Math.floor(Math.random() * marginVar) + "px";
-    tile.style.marginRight = Math.floor(Math.random() * marginVar) + "px";
-    tile.style.marginLeft = Math.floor(Math.random() * marginVar) + "px";
-    tile.style.marginBottom = Math.floor(Math.random() * marginVar) + "px";
+    randomizeTilePosition(tile);
   });
 };
 
-const moveTileToStaged = (e) => {
+const moveTile = (e) => {
   e.stopPropagation();
+  const selectedTileEl = e.target;
   const selectedTileId = e.target.id;
   const tileStr = e.target.textContent;
+
   console.log(selectedTileId);
   console.log(tileStr);
+  if (playgroundEl.contains(selectedTileEl)) {
+    selectedTileEl.style = "visibility: hidden";
+    const stagedTile = document.createElement("div");
+    stagedTile.classList.add("tile");
+    stagedTile.textContent = tileStr;
+    stagedTile.style = "margin: 5px";
+    stagedTile.id = selectedTileId;
 
-  e.target.style = "visibility: hidden";
+    stagingEl.appendChild(stagedTile);
+  } else if (stagingEl.contains(selectedTileEl)) {
+    selectedTileEl.remove();
+    const tileOriginal = document.getElementById(e.target.id);
+    tileOriginal.style = "visibility: visible";
+
+    randomizeTilePosition(tileOriginal);
+  }
 };
 
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
 
 document.querySelectorAll(".tile").forEach((tile) => {
-  addEventListener("click", moveTileToStaged);
+  addEventListener("click", moveTile);
 });
