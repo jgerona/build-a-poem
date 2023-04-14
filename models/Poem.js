@@ -29,6 +29,7 @@ Poem.init(
     },
     {
         sequelize,
+        freezeTableName: true,
         modelName: 'poem'
     }
 )

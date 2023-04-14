@@ -18,7 +18,7 @@ router.get('/', async (req,res) => {
         
     const poems = poemData.map((poem) => poem.get({ plain:true}))
     res.render('build', {
-        poems,
+        ...poems,
         logged_in: req.session.logged_in
     });
     } catch (err) {
