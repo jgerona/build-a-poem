@@ -1,0 +1,30 @@
+.playground {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.tile {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: max-content;
+  height: max-content;
+
+  color: black;
+  background-color: rgb(240, 240, 240);
+  border-width: 1px 3px 3px 1px;
+  border-style: solid;
+  border-color: black;
+
+  padding: 5px;
+  cursor: pointer;
+}
+
+.staging-area {
+  background-color: lightblue;
+  height: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
