@@ -400,12 +400,6 @@ const moveTile = (e) => {
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
 
-// document.querySelectorAll(".tile").forEach((tile) => {
-//   addEventListener("click", moveTile);
-// });
-
-playgroundEl.addEventListener("click", (event) => {
-  if (event.target.class === "tile") {
-    console.log(event.target.innerText);
-  }
+document.querySelectorAll(".tile").forEach((tile) => {
+  addEventListener("click", moveTile);
 });

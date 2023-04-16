@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   background-color: antiquewhite;
   padding: 1rem;
-  pointer-events: none;
 }
 
 .tile {
@@ -23,6 +22,9 @@
 }
 
 .staging-area {
+  display: flex;
+  flex-direction: row;
+
   background-color: lightblue;
   height: 3rem;
   margin-top: 2rem;
