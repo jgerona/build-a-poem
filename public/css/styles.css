@@ -21,12 +21,31 @@
   cursor: pointer;
 }
 
+.stage {
+  display: flex;
+}
+
 .staging-area {
   display: flex;
   flex-direction: row;
+  position: relative;
+  width: 75%;
 
   background-color: lightblue;
   height: 3rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.staging-area div {
+  margin-right: auto;
+}
+
+#submitPoem {
+  height: 45px;
+  width: 100px;
+
+  background-color: lightgreen;
+  color: black;
+  text-align: center;
 }
