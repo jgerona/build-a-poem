@@ -1,0 +1,15 @@
+<div>
+    <h2>Hello, {{username}}</h2>
+
+</div>
+<div>
+    {{#each poems as |poem|}}
+    <nav>
+        <ul>
+            <li><h3>{{poem.title}}</h3></li>
+            <li>{{poem.content}}</li>
+            
+        </ul>
+    </nav>
+    {{/each}}
+</div>
