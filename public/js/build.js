@@ -398,16 +398,16 @@ const moveTile = (e) => {
   }
 };
 
-const sendData = () => {
-  var poem = [];
-  $(".staged").each(function () {
-    result.push($(this).text());
-  });
+// const sendData = () => {
+//   var poem = [];
+//   $(".staged").each(function () {
+//     result.push($(this).text());
+//   });
 
-  result = result.join(", ");
+//   result = result.join(", ");
 
-  console.log(result);
-};
+//   console.log(result);
+// };
 
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
@@ -416,4 +416,4 @@ document.querySelectorAll(".tile").forEach((tile) => {
   addEventListener("click", moveTile);
 });
 
-document.getElementById("#submit").addEventListener("click", sendData);
+// document.getElementById("#submit").addEventListener("click", sendData);

@@ -23,12 +23,12 @@
 
 .stage {
   display: flex;
+  flex-wrap: nowrap;
 }
 
 .staging-area {
   display: flex;
   flex-direction: row;
-  position: relative;
   width: 75%;
 
   background-color: lightblue;
@@ -37,13 +37,15 @@
   margin-bottom: 2rem;
 }
 
-.staging-area div {
-  margin-right: auto;
-}
-
 #submitPoem {
-  height: 45px;
-  width: 100px;
+  flex: 1;
+  height: 3rem;
+  width: 6rem;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 
   background-color: lightgreen;
   color: black;
