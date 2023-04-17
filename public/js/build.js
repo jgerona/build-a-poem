@@ -383,6 +383,7 @@ const moveTile = (e) => {
     selectedTileEl.style = "visibility: hidden";
     const stagedTile = document.createElement("div");
     stagedTile.classList.add("tile");
+    stagedTile.classList.add("staged");
     stagedTile.textContent = tileStr;
     stagedTile.style = "margin: 5px";
     stagedTile.id = selectedTileId;
@@ -397,9 +398,22 @@ const moveTile = (e) => {
   }
 };
 
+// const sendData = () => {
+//   var poem = [];
+//   $(".staged").each(function () {
+//     result.push($(this).text());
+//   });
+
+//   result = result.join(", ");
+
+//   console.log(result);
+// };
+
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
 
 document.querySelectorAll(".tile").forEach((tile) => {
   addEventListener("click", moveTile);
 });
+
+// document.getElementById("#submit").addEventListener("click", sendData);

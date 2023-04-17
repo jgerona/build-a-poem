@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   background-color: antiquewhite;
   padding: 1rem;
-  pointer-events: none;
 }
 
 .tile {
@@ -22,9 +21,33 @@
   cursor: pointer;
 }
 
+.stage {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .staging-area {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+
   background-color: lightblue;
   height: 3rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+#submitPoem {
+  flex: 1;
+  height: 3rem;
+  width: 6rem;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  background-color: lightgreen;
+  color: black;
+  text-align: center;
 }
