@@ -398,6 +398,28 @@ const moveTile = (e) => {
   }
 };
 
+const submitPoem = async (e) => {
+  e.preventDefault();
+  var content = "";
+  document.querySelectorAll(".staged").forEach((tile) => {
+    //console.log(tile);
+    content = content + `${tile.innerHTML} `;
+  });
+  if(content.length>0){
+    // console.log(content);
+    const res = await fetch('/api/poem/', {
+      method: 'POST',
+      body: JSON.stringify({content}),
+      headers: {'Content-Type': 'application/json'},
+    });
+    if(res.ok) {
+      document.location.replace('/build');
+    } else {
+      alert(res.statusText);
+    }
+  }
+}
+
 // const sendData = () => {
 //   var poem = [];
 //   $(".staged").each(function () {
@@ -416,4 +438,4 @@ document.querySelectorAll(".tile").forEach((tile) => {
   addEventListener("click", moveTile);
 });
 
-// document.getElementById("#submit").addEventListener("click", sendData);
+document.querySelector("#submitPoem").addEventListener("click", submitPoem);

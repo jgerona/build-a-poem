@@ -50,7 +50,9 @@ router.get("/poem/:id", async (req, res) => {
 
 router.get("/build", async (req, res) => {
   try {
-    res.render("build");
+    res.render("build", {
+        logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
