@@ -4,9 +4,9 @@ const {Poem, User} = require('../../models')
 const withAuth = require ('../../utils/auth');
 
 router.post('/', withAuth, async (req,res) => {
-    console.log(req.body);
-    console.log(req.session.user_id);
-    console.log("helo")
+    // console.log(req.body);
+    // console.log(req.session.user_id);
+    // console.log("helo")
     try {
       const newPoem = await Poem.create({
         //title: "this is a title",
