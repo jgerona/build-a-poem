@@ -8,17 +8,11 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
   try {
     const poemData = await Poem.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
     });
 
     const poems = poemData.map((poem) => poem.get({ plain: true }));
     res.render("homepage", {
-      ...poems,
+      poems,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -27,6 +21,7 @@ router.get("/", async (req, res) => {
 });
 
 //get poem by ID
+// for future developments
 router.get("/poem/:id", async (req, res) => {
   try {
     const poemData = await Poem.findByPk(req.params.id, {
