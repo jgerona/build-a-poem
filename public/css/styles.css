@@ -5,6 +5,12 @@
   padding: 1rem;
 }
 
+.poem {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
 .tile {
   flex-grow: 0;
   flex-shrink: 1;

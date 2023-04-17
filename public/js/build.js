@@ -411,31 +411,20 @@ const submitPoem = async (e) => {
     //console.log(tile);
     content = content + `${tile.innerHTML} `;
   });
-  if(content.length>0){
+  if (content.length > 0) {
     // console.log(content);
-    const res = await fetch('/api/poem/', {
-      method: 'POST',
-      body: JSON.stringify({content}),
-      headers: {'Content-Type': 'application/json'},
+    const res = await fetch("/api/poem/", {
+      method: "POST",
+      body: JSON.stringify({ content }),
+      headers: { "Content-Type": "application/json" },
     });
-    if(res.ok) {
-      document.location.replace('/build');
+    if (res.ok) {
+      document.location.replace("/build");
     } else {
       alert(res.statusText);
     }
   }
-}
-
-// const sendData = () => {
-//   var poem = [];
-//   $(".staged").each(function () {
-//     result.push($(this).text());
-//   });
-
-//   result = result.join(", ");
-
-//   console.log(result);
-// };
+};
 
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
