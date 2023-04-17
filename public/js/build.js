@@ -426,17 +426,6 @@ const submitPoem = async (e) => {
   }
 };
 
-// const sendData = () => {
-//   var poem = [];
-//   $(".staged").each(function () {
-//     result.push($(this).text());
-//   });
-
-//   result = result.join(", ");
-
-//   console.log(result);
-// };
-
 const tiles = getRandomSubArr(tileSet, subArrSize);
 displayArr(tiles);
 
