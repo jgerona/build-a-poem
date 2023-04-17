@@ -1,1 +1,10 @@
-{{!-- This is for future developments --}}
+{{log poem}}
+{{#each poems as |poem|}}
+<div>
+    <nav>
+        <ul>
+            <li>{{poem.content}}</li>
+        </ul>
+    </nav>
+</div>
+{{/each}}
