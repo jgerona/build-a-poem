@@ -1,1 +1,13 @@
-{{!-- This is for future developments --}}
+{{log poem}}
+{{#each poems as |poem|}}
+  <div>
+    <article>
+
+      <div class="poem">{{poem.content}}</div>
+      <footer>By: {{user.username}}</footer>
+
+    </article>
+  </div>
+{{/each}}
+
+<script src="./js/renderStyles.js"></script>
