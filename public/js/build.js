@@ -368,6 +368,7 @@ const displayArr = (arr) => {
 
   document.querySelectorAll(".tile").forEach((tile) => {
     randomizeTilePosition(tile);
+    tile.classList.add("animate__animated", "animate__fadeIn");
   });
 };
 
@@ -380,8 +381,10 @@ const moveTile = (e) => {
   console.log(selectedTileId);
   console.log(tileStr);
   if (playgroundEl.contains(selectedTileEl)) {
-    selectedTileEl.style = "visibility: hidden";
+    selectedTileEl.classList.replace("animate__fadeIn", "animate__fadeOut");
+
     const stagedTile = document.createElement("div");
+    stagedTile.classList.add("animate__animated", "animate__fadeIn");
     stagedTile.classList.add("tile");
     stagedTile.classList.add("staged");
     stagedTile.textContent = tileStr;
@@ -390,9 +393,12 @@ const moveTile = (e) => {
 
     stagingEl.appendChild(stagedTile);
   } else if (stagingEl.contains(selectedTileEl)) {
+    selectedTileEl.classList.replace("animate__fadeIn", "animate__fadeOut");
+
     selectedTileEl.remove();
+
     const tileOriginal = document.getElementById(e.target.id);
-    tileOriginal.style = "visibility: visible";
+    tileOriginal.classList.replace("animate__fadeOut", "animate__fadeIn");
 
     randomizeTilePosition(tileOriginal);
   }
