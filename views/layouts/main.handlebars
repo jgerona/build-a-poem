@@ -17,17 +17,20 @@
         <li><strong>Build a Poem</strong></li>
       </ul>
       <ul>
+        {{#if logged_in}}
         <li><a href="/profile">Profile</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><button id="logout">Logout</button></li>
+        {{else}}
+        <li><a href="/login">Login</a></li>
+        {{/if}}
       </ul>
     </nav>
     <div>
       {{{ body }}}
     </div>
-    
-    <footer>
-
-    </footer>
+    {{#if logged_in}}
+    <script src="./js/logout.js"></script>
+    {{/if}}
   </body>
 
 </html>
