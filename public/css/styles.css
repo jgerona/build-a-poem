@@ -1,0 +1,53 @@
+.playground {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+  padding: 1rem;
+}
+
+.tile {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: max-content;
+  height: max-content;
+
+  color: black;
+  background-color: rgb(240, 240, 240);
+  border-width: 1px 3px 3px 1px;
+  border-style: solid;
+  border-color: black;
+
+  padding: 5px;
+  cursor: pointer;
+}
+
+.stage {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.staging-area {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+
+  background-color: lightblue;
+  height: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#submitPoem {
+  flex: 1;
+  height: 3rem;
+  width: 6rem;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  background-color: lightgreen;
+  color: black;
+  text-align: center;
+}

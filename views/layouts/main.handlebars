@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build A Poem</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body class="container">
+    <nav>
+      <ul>
+        <li><a href="/build"><strong>Build a Poem</strong></a></li>
+      </ul>
+      <ul>
+        {{#if logged_in}}
+          <li><a href="/profile">Profile</a></li>
+          <li><button id="logout">Logout</button></li>
+        {{else}}
+          <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+    <div>
+      {{{body}}}
+    </div>
+    {{#if logged_in}}
+      <script src="./js/logout.js"></script>
+    {{/if}}
+  </body>
+
+</html>
