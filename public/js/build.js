@@ -382,7 +382,7 @@ const moveTile = (e) => {
   console.log(tileStr);
   if (playgroundEl.contains(selectedTileEl)) {
     selectedTileEl.classList.replace("animate__fadeIn", "animate__fadeOut");
-    // selectedTileEl.style = "visibility: hidden";
+
     const stagedTile = document.createElement("div");
     stagedTile.classList.add("animate__animated", "animate__fadeIn");
     stagedTile.classList.add("tile");
@@ -401,8 +401,6 @@ const moveTile = (e) => {
     tileOriginal.classList.replace("animate__fadeOut", "animate__fadeIn");
 
     randomizeTilePosition(tileOriginal);
-
-    // tileOriginal.style = "visibility: visible";
   }
 };
 
